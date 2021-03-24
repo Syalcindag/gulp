@@ -7,8 +7,10 @@ const minifyJS = require('gulp-uglify');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const del = require('del');
-const runSequence = require('run-sequence');
 
-gulp.task('test', () => {
-    console.log('gulp testi calıstı');
+gulp.task('js', async () => {
+   return gulp.src('./src/js/**/*.js')
+   .pipe(concat('app.min.js'))
+   .pipe(minifyJS())
+   .pipe(gulp.dest('dist/js'));
 });
